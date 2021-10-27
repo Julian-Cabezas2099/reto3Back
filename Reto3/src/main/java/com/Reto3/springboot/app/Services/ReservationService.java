@@ -67,4 +67,17 @@ public class ReservationService {
 	        }).orElse(false);
 	        return aBoolean;
 	    }
+
+   	//Servicio de la consulta entre dos fechas
+	    public List<Reservation>reporte(Date date1, Date date2){
+	    	return repositoryR.reporteFechas(date1, date2);
+	    }
+	    
+	    //Servicio para el contador cancelled y completed
+	    public HashMap<String,Reservation>countS(){
+	    	Map<String,Reservation> nueva = new HashMap<>();
+	    	nueva.put("Completed", repositoryR.counStatus().get(0));
+	    	nueva.put("Completed", repositoryR.counStatus().get(1));
+	    	return (HashMap<String, Reservation>) nueva;
+	    }
 }

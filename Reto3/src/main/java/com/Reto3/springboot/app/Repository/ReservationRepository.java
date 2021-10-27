@@ -27,4 +27,12 @@ public class ReservationRepository {
 	    public void delete(Reservation reservation){
 	    	reservationR.delete(reservation);
 	    }
+  //Implementacion de consulta Between
+	    public List<Reservation> reporteFechas(Date date1, Date date2){
+	    	  return (List<Reservation>) reservationR.findByStartDateBetween(date1, date2);
+	    }
+	    //implementacion contador de completed y cancelled
+	    public List<Reservation> counStatus(){
+	    	return (List<Reservation>) reservationR.findCountS();
+	    }
 }

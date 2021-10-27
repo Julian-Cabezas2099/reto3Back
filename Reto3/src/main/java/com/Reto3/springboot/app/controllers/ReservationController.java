@@ -52,5 +52,18 @@ public class ReservationController {
 	    public boolean delete(@PathVariable("id") int reservationId) {
 	        return service.deleteReservation(reservationId);
 	    }
+		
+		//Controlador de between
+
+ 	    @GetMapping("/report-dates/{fechainicio}/{fechafin}")
+	    public List<Reservation> getReport(@PathVariable("fechainicio") Date date1, @PathVariable("fechafin") Date date2 ){
+	        return service.reporte(date1, date2);
+	    }
+	    
+		//controlador de cancelled y completed
+	    @GetMapping("/report-status")
+	    public HashMap<String, Reservation> statusRe(){
+	        return service.countS();
+	    }
 	
 }
